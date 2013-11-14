@@ -36,7 +36,7 @@ module Locomotive
 
     def update
       @page = current_site.pages.find(params[:id])
-      @page.update_attributes(params[:page])
+      @page.update_attributes(params[:page].except(:updated_at))
       respond_with @page, location: edit_page_path(@page._id)
     end
 
